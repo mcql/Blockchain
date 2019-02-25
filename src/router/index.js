@@ -11,6 +11,7 @@ import FMail from '@/components/findpwd/Mail'
 import Trade from '@/components/trade/Index'
 import Otc from '@/components/otc/Index'
 import Article from '@/components/article/Index'
+import Mine from '@/components/mine/Index'
 
 Vue.use(Router)
 
@@ -64,6 +65,10 @@ export default new Router({
       path: '/article',
       name: 'Article',
       component: Article
+    }, {
+      path: '/mine',
+      name: 'Mine',
+      component: Mine
     }
   ]
 })

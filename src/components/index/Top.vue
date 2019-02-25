@@ -18,7 +18,17 @@
       </div>
     </div>
     <div>
-      <ul>
+      <ul v-if = 'islogin'>
+        <li><router-link to="/mine">个人中心</router-link></li>
+        <li><router-link to="/moneylist">资产</router-link></li>
+        <li><router-link to="/order">订单</router-link></li>
+        <li @mouseover='shownav2_detail' @mouseout='hidenav2_detail'>App下载</li>
+        <li @mouseover='shownav3_detail' @mouseout='hidenav3_detail'>简体中文
+          <i class='fa fa-angle-down'></i>
+        </li>
+        <li @click='loginout'>退出</li>
+      </ul>
+      <ul v-else>
         <li><router-link to="/login">登录</router-link></li>
         <li><router-link to="/register">注册</router-link></li>
         <li @mouseover='shownav2_detail' @mouseout='hidenav2_detail'>App下载</li>
@@ -42,6 +52,16 @@
 
 <script>
 export default {
+  computed: {
+    islogin () {
+      return this.$store.state.login
+    }
+  },
+  watch: {
+    islogin: function (oldval, newval) {
+      this.islogin = newval
+    }
+  },
   methods: {
     /* eslint-disable */
     shownav1_detail () {
@@ -61,8 +81,11 @@ export default {
     },
     hidenav3_detail () {
       $('.nav3').addClass('hide')
-    }
+    },
     /* eslint-enable */
+    loginout () {
+      this.$store.commit('login', false)
+    }
   }
 }
 </script>

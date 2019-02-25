@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import '@/assets/css/common.css'
 import '@/assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
@@ -12,6 +13,26 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  store,
+  components: {
+    App
+  },
   template: '<App/>'
+})
+
+// 路由判断
+router.beforeEach((to, from, next) => {
+  if (to.path == '/login' || to.path == '/' || to.path == '/register' || /* eslint-disable-line */
+      to.path == '/findpwd' || to.path == '/trade' || to.path == '/article' || /* eslint-disable-line */
+      to.path == '/mail' || to.path == '/fmail') { /* eslint-disable-line */
+    next()
+  } else {
+    if (!store.state.login) {
+      next({
+        path: '/login'
+      })
+    } else {
+      next()
+    }
+  }
 })
