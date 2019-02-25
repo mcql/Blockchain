@@ -4,7 +4,7 @@
       <h1>{{dialogtitle}}</h1>
       <input type='text' placeholder='提示内容' v-model='dialogcontent'>
       <div>
-        <span>提交</span>
+        <span @click='submit'>提交</span>
         <span @click='cancle'>取消</span>
       </div>
     </div>
@@ -14,6 +14,9 @@
 <script>
 export default {
   methods: {
+    submit () {
+      this.$store.commit('showdialog', false)
+    },
     cancle () {
       this.$store.commit('showdialog', false)
     }

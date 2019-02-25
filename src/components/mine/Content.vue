@@ -3,64 +3,106 @@
     <div>
       <i class="fa fa-plane"></i>
       <p>账户</p>
-      <p>3426089154@qq.com</p>
+      <p>{{username}}</p>
     </div>
     <div>
       <i class="fa fa-lightbulb-o"></i>
       <p>昵称</p>
-      <p>3426089154@qq.com</p>
+      <p>{{nickname}}</p>
       <div class="change" @click='changeNickname'>修改</div>
     </div>
     <div>
       <i class="fa fa-puzzle-piece"></i>
       <p>邀请码</p>
-      <p>SOPEEZLZ</p>
+      <p>{{yaoqing}}</p>
       <div class="change">邀请管理</div>
     </div>
     <div>
       <i class="fa fa-recycle"></i>
       <p>登录密码</p>
-      <p>*********</p>
+      <p>{{login_password}}</p>
       <div class="change">修改</div>
     </div>
     <div>
       <i class="fa fa-rss"></i>
       <p>实名认证</p>
-      <p>未认证</p>
-      <div class="change">提交认证</div>
+      <p v-if='!shiming'>未认证</p>
+      <p v-else>认证成功</p>
+      <div class="change" v-if='!shiming'>提交认证</div>
     </div>
     <div>
       <i class="fa fa-phone-square"></i>
       <p>手机</p>
-      <p>未绑定</p>
-      <div class="change">绑定</div>
+      <p v-if='!mobile_status'>未绑定</p>
+      <p v-else>{{mobile}}</p>
+      <div v-if='!mobile_status' class="change">绑定</div>
     </div>
     <div>
       <i class="fa fa-gift"></i>
       <p>邮箱</p>
-      <p>3426089154@qq.com</p>
-      <div class="change" @click="changeMail">修改</div>
+      <p v-if='!mail_status'>未绑定</p>
+      <p v-else>{{mail}}</p>
+      <div class="change" @click="changeMail" v-if='mail_status'>修改</div>
+      <div class="change" v-else @click="addmail">绑定</div>
     </div>
     <div>
       <i class="fa fa-pie-chart"></i>
       <p>谷歌验证</p>
-      <p>未开启验证</p>
-      <div class="change">开启验证</div>
+      <p v-if='!google'>未开启验证</p>
+      <p v-else>验证通过</p>
+      <div class="change" v-if='!google'>开启验证</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      username: '3426089154@qq.com',
+      yaoqing: 'SOPEEZLZ'
+    }
+  },
+  computed: {
+    nickname () {
+      return this.$store.state.changestatus['1'].nickname
+    },
+    login_password () {
+      return this.$store.state.changestatus['2'].login_pwd
+    },
+    shiming () {
+      return this.$store.state.changestatus['3'].shiming
+    },
+    mobile () {
+      return this.$store.state.changestatus['4'].mobile.mobile_num
+    },
+    mobile_status () {
+      return this.$store.state.changestatus['4'].mobile.mobile_status
+    },
+    mail_status () {
+      return this.$store.state.changestatus['5'].mail.mail_status
+    },
+    mail () {
+      return this.$store.state.changestatus['5'].mail.mail
+    },
+    google () {
+      return this.$store.state.changestatus['6'].google
+    }
+  },
   methods: {
     changeNickname () {
       this.$store.commit('dialogtitle', '修改昵称')
-      this.$store.commit('dialogcontent', '572669875@qq.com')
+      this.$store.commit('dialogcontent', this.nickname)
       this.$store.commit('showdialog', true)
     },
     changeMail () {
       this.$store.commit('dialogtitle', '修改邮箱')
-      this.$store.commit('dialogcontent', '572669875@qq.com')
+      this.$store.commit('dialogcontent', this.mail)
+      this.$store.commit('showdialog', true)
+    },
+    addmail () {
+      this.$store.commit('dialogtitle', '绑定邮箱')
+      this.$store.commit('dialogcontent', '')
       this.$store.commit('showdialog', true)
     }
   }
