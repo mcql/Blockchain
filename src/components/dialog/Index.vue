@@ -43,17 +43,6 @@ export default {
         this.$store.state.showdialog = newValue
       }
     }
-  },
-  watch: {
-    dialogtitle: function (oldval, newval) {
-      this.dialogtitle = newval
-    },
-    dialogcontent: function (oldval, newval) {
-      this.dialogcontent = newval
-    },
-    showdialog: function (oldval, newval) {
-      this.showdialog = newval
-    }
   }
 }
 </script>
