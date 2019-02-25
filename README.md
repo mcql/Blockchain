@@ -1,6 +1,6 @@
 # ming
 
-> 新建项目
+> 新建项目 vue修改区块链
 
 ## Build Setup
 
