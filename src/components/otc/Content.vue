@@ -19,7 +19,7 @@
           <td>剩余 (USDT)</td>
           <td>限额 (CNY)</td>
           <td>单价： (CNY)</td>
-          <td>支付方式</td>  
+          <td>支付方式</td>
           <td>操作</td>
         </thead>
         <tbody>
@@ -29,7 +29,9 @@
             <td>200.00 - 40000.00</td>
             <td>7.22</td>
             <td>银行卡</td>
-            <td><div class="buy_btn">购买</div></td>
+            <td>
+              <div class="buy_btn">购买</div>
+            </td>
           </tr>
           <tr>
             <td>搬砖局局长( 0 / 100.00% )</td>
@@ -37,7 +39,9 @@
             <td>200.00 - 40000.00</td>
             <td>7.22</td>
             <td>银行卡</td>
-            <td><div class="buy_btn">购买</div></td>
+            <td>
+              <div class="buy_btn">购买</div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -47,34 +51,34 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       buy: false,
       sell: false
-    };
+    }
   },
   methods: {
-    showbuy() {
-      this.buy = true;
+    showbuy () {
+      this.buy = true
     },
-    hidebuy() {
-      this.buy = false;
+    hidebuy () {
+      this.buy = false
     },
-    showsell() {
-      this.sell = true;
+    showsell () {
+      this.sell = true
     },
-    hidesell() {
-      this.sell = false;
+    hidesell () {
+      this.sell = false
     }
   }
-};
+}
 </script>
 
 <style scoped>
-.content tbody tr:hover{
+.content tbody tr:hover {
   background-color: #eeeeee;
 }
-.buy_btn{
+.buy_btn {
   width: 52px;
   margin: 0 auto;
   height: 24px;
@@ -84,7 +88,7 @@ export default {
   background: #26c399;
   color: #fff;
 }
-.content tbody td{
+.content tbody td {
   height: 56px;
   color: #0d1e3e;
   line-height: 56px;
