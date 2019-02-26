@@ -110,7 +110,7 @@ export default {
   padding: 0 20px 20px;
   min-height: calc(100vh - 300px);
   margin-bottom: 40px;
-  jusitify-content: flex-start;
+  justify-content: flex-start;
 }
 .content,
 .content table {
