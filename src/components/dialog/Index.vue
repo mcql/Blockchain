@@ -15,6 +15,12 @@
 export default {
   methods: {
     submit () {
+      if (this.change_num == 1) { //eslint-disable-line
+        this.$store.state.changestatus[1].nickname = this.dialogcontent
+      } else if (this.change_num == 5) { //eslint-disable-line
+        this.$store.state.changestatus[5].mail.mail_status = true
+        this.$store.state.changestatus[5].mail.mail = this.dialogcontent
+      }
       this.$store.commit('showdialog', false)
     },
     cancle () {
@@ -22,6 +28,14 @@ export default {
     }
   },
   computed: {
+    change_num: {
+      get: function () {
+        return this.$store.state.change_num
+      },
+      set: function (newValue) {
+        this.$store.state.change_num = newValue
+      }
+    },
     dialogtitle: {
       get: function () {
         return this.$store.state.dialogtitle

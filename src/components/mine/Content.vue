@@ -36,6 +36,7 @@
       <p v-if='!mobile_status'>未绑定</p>
       <p v-else>{{mobile}}</p>
       <div v-if='!mobile_status' class="change">绑定</div>
+      <div v-else class="change">修改</div>
     </div>
     <div>
       <i class="fa fa-gift"></i>
@@ -94,16 +95,19 @@ export default {
       this.$store.commit('dialogtitle', '修改昵称')
       this.$store.commit('dialogcontent', this.nickname)
       this.$store.commit('showdialog', true)
+      this.$store.commit('change_num', 1)
+    },
+    addmail () {
+      this.$store.commit('dialogtitle', '添加邮箱')
+      this.$store.commit('dialogcontent', '')
+      this.$store.commit('showdialog', true)
+      this.$store.commit('change_num', 5)
     },
     changeMail () {
       this.$store.commit('dialogtitle', '修改邮箱')
       this.$store.commit('dialogcontent', this.mail)
       this.$store.commit('showdialog', true)
-    },
-    addmail () {
-      this.$store.commit('dialogtitle', '绑定邮箱')
-      this.$store.commit('dialogcontent', '')
-      this.$store.commit('showdialog', true)
+      this.$store.commit('change_num', 5)
     }
   }
 }

@@ -60,7 +60,8 @@ export default new Router({
     }, {
       path: '/otc',
       name: 'Otc',
-      component: Otc
+      component: Otc,
+      meta: { auth: true }
     }, {
       path: '/article',
       name: 'Article',
@@ -68,7 +69,8 @@ export default new Router({
     }, {
       path: '/mine',
       name: 'Mine',
-      component: Mine
+      component: Mine,
+      meta: { auth: true }
     }
   ]
 })

@@ -2,23 +2,12 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
 import store from './store'
+import router from './router'
 import '@/assets/css/common.css'
 import '@/assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  components: {
-    App
-  },
-  template: '<App/>'
-})
 
 // 路由判断
 router.beforeEach((to, from, next) => {
@@ -27,12 +16,23 @@ router.beforeEach((to, from, next) => {
       to.path == '/mail' || to.path == '/fmail') { /* eslint-disable-line */
     next()
   } else {
-    if (!store.state.login) {
+    if (store.state.login) {
+      next()
+    } else {
       next({
         path: '/login'
       })
-    } else {
-      next()
     }
   }
+})
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  store,
+  router,
+  components: {
+    App
+  },
+  template: '<App/>'
 })

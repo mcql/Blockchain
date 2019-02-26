@@ -18,7 +18,7 @@
       </div>
     </div>
     <div>
-      <ul v-if = 'islogin'>
+      <ul v-if='login'>
         <li><router-link to="/mine">个人中心</router-link></li>
         <li><router-link to="/moneylist">资产</router-link></li>
         <li><router-link to="/order">订单</router-link></li>
@@ -53,13 +53,13 @@
 <script>
 export default {
   computed: {
-    islogin () {
-      return this.$store.state.login
-    }
-  },
-  watch: {
-    islogin: function (oldval, newval) {
-      this.islogin = newval
+    login: {
+      get () {
+        return this.$store.state.login
+      },
+      set (oldval, newval) {
+        this.$store.state.login = newval
+      }
     }
   },
   methods: {
@@ -84,7 +84,9 @@ export default {
     },
     /* eslint-enable */
     loginout () {
+      sessionStorage.setItem('isLogin', false)
       this.$store.commit('login', false)
+      this.$router.push('/')
     }
   }
 }

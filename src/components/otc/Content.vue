@@ -13,7 +13,7 @@
       <span>USDT</span>
     </div>
     <div class="content">
-      <table cellpadding="0" cellspacing="0">
+      <table cellpadding="0" cellspacing="0" style="width:100%;">
         <thead>
           <td>商家（成单数 / 信用度）</td>
           <td>剩余 (USDT)</td>

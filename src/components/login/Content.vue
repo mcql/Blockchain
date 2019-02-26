@@ -34,6 +34,7 @@ export default {
   methods: {
     login () {
       this.$store.commit('login', true)
+      sessionStorage.setItem('isLogin', true)
       this.$router.push('/')
     }
   }
