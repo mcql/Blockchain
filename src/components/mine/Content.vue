@@ -15,7 +15,7 @@
       <i class="fa fa-puzzle-piece"></i>
       <p>邀请码</p>
       <p>{{yaoqing}}</p>
-      <div class="change">邀请管理</div>
+      <div class="change"><router-link to='invite'>邀请管理</router-link></div>
     </div>
     <div>
       <i class="fa fa-recycle"></i>
@@ -113,7 +113,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .content {
   width: 86.97%;
   max-width: 1920px;
@@ -159,7 +159,7 @@ export default {
   line-height: 28px;
   font-weight: 700;
 }
-.change,.change a{
+.change{
   padding: 0 14px;
   height: 27px;
   line-height: 27px;
@@ -171,7 +171,16 @@ export default {
   margin-top: 10px;
   cursor: pointer;
 }
-.change:hover,.change a:hover{
+.change a{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  color: #5065bd;
+}
+.change a:hover{
+  color: #fff;
+}
+.change:hover{
   background-color: #5065bd;
   color: #fff;
 }

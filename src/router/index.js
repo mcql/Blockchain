@@ -12,6 +12,7 @@ import Trade from '@/components/trade/Index'
 import Otc from '@/components/otc/Index'
 import Article from '@/components/article/Index'
 import Mine from '@/components/mine/Index'
+import Invite from '@/components/invite/Index'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/mine',
       name: 'Mine',
       component: Mine,
+      meta: { auth: true }
+    }, {
+      path: '/invite',
+      name: 'Invite',
+      component: Invite,
       meta: { auth: true }
     }
   ]
