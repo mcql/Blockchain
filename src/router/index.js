@@ -13,10 +13,12 @@ import Otc from '@/components/otc/Index'
 import Article from '@/components/article/Index'
 import Mine from '@/components/mine/Index'
 import Invite from '@/components/invite/Index'
+import Info from '@/components/info/Index'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -76,6 +78,11 @@ export default new Router({
       path: '/invite',
       name: 'Invite',
       component: Invite,
+      meta: { auth: true }
+    }, {
+      path: '/info',
+      name: 'Info',
+      component: Info,
       meta: { auth: true }
     }
   ]

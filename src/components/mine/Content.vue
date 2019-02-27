@@ -28,7 +28,7 @@
       <p>实名认证</p>
       <p v-if='!shiming'>未认证</p>
       <p v-else>认证成功</p>
-      <div class="change" v-if='!shiming'>提交认证</div>
+      <div class="change" v-if='!shiming'><router-link to="/info">提交认证</router-link></div>
     </div>
     <div>
       <i class="fa fa-phone-square"></i>
@@ -119,14 +119,13 @@ export default {
   max-width: 1920px;
   position: relative;
   z-index: 1;
-  margin: 32px auto 0;
+  margin: 32px auto 60px;
   padding: 0 20px;
   -webkit-box-shadow: 0 5px 30px 5px #e7e7e7;
   box-shadow: 0 5px 30px 5px #e7e7e7;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   min-height: calc(100vh - 400px);
-  margin-bottom: 60px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
